@@ -1,0 +1,59 @@
+managed implementation in class zbp_r_car_master unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_CAR_MASTER alias Car
+persistent table ZCAR_MASTER
+extensible
+draft table ZCAR_MASTER_D
+etag master LocalLastChanged
+lock master total etag Lastchangedat
+authorization master( global )
+{
+
+  field ( readonly )
+    CarID,
+    StatusText,
+    BodyText,
+    Createdby,
+    Createdat,
+    Lastchangedby,
+    Lastchangedat,
+    Locallastchanged,
+    StatusColour;
+
+  field ( numbering : managed )
+    CarID;
+
+  create;
+  update;
+  delete;
+  action decodeVin result [1] $self;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZCAR_MASTER corresponding extensible //na przyszlosc, bez dopisania nizej, automatycznie zmapuje.
+  {
+  CarID = CAR_ID;
+  Vin = VIN;
+  Brand = BRAND;
+  Model = MODEL;
+  YearOfProduction = YEAR_OF_PRODUCTION;
+  Kilometers = KILOMETERS;
+  Price = PRICE;
+  Currency = CURRENCY;
+  Note = NOTE;
+  Status = STATUS;
+  Body = BODY;
+  Createdby = CREATEDBY;
+  Createdat = CREATEDAT;
+  Lastchangedby = LASTCHANGEDBY;
+  Lastchangedat = LASTCHANGEDAT;
+  Locallastchanged = LOCALLASTCHANGED;
+
+  }
+}

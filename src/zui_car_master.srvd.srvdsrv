@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition for ZC_CAR_MASTER'
+define service ZUI_CAR_MASTER {
+  expose ZC_CAR_MASTER   as CarDealer;
+  expose ZC_CAR_CUSTOMER as CarCustomer;
+}
