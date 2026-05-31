@@ -49,6 +49,9 @@ authorization master( global )
   Note = NOTE;
   Status = STATUS;
   Body = BODY;
+  LogoFile = LOGO_FILE;
+  LogoMime = LOGO_MIME;
+  LogoName = LOGO_NAME;
   Createdby = CREATEDBY;
   Createdat = CREATEDAT;
   Lastchangedby = LASTCHANGEDBY;

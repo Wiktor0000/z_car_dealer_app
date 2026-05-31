@@ -3,7 +3,8 @@
   typeName: 'Samochód',
   typeNamePlural: 'Samochody',
   title: { type: #STANDARD, value: 'Model' },
-  description: { type: #STANDARD, value: 'Brand' }
+  description: { type: #STANDARD, value: 'Brand' },
+  imageUrl: 'LogoFile'
 }
 annotate view ZC_CAR_MASTER with
 {
@@ -72,6 +73,16 @@ annotate view ZC_CAR_MASTER with
   @EndUserText.label: 'Notatki'
   @UI.identification: [ { position: 90 } ]
   Note;
+  
+  @EndUserText.label: 'Logo pojazdu'
+  @UI.identification: [ { position: 100 } ]
+  LogoFile;
+  
+  @UI.hidden: true
+  LogoMime;
+  
+  @UI.hidden: true
+  LogoName;
 
   @UI.hidden: true
   Locallastchanged;

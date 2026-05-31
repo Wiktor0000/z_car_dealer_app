@@ -14,6 +14,14 @@ define root view entity ZC_CAR_CUSTOMER
     @Semantics.amount.currencyCode : 'Currency'
     Price,
     Currency,
+    @Semantics.largeObject: { 
+        mimeType: 'LogoMime', 
+        fileName: 'LogoName', 
+    contentDispositionPreference: #INLINE }
+    LogoFile,
+    @Semantics.mimeType: true
+    LogoMime,
+    LogoName,
     @Consumption.valueHelpDefinition: [{ entity: { name: 'zcar_status_vh', element: 'status_code' }, useForValidation: true}]
     @ObjectModel.text.element: ['StatusText']
     StatusText,

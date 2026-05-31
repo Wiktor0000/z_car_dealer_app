@@ -29,6 +29,14 @@ define root view entity ZC_CAR_MASTER
     @ObjectModel.text.element: ['BodyText']
     Body,
     BodyText,
+    @Semantics.largeObject: { 
+        mimeType: 'LogoMime', 
+        fileName: 'LogoName', 
+        contentDispositionPreference: #INLINE }
+    LogoFile,
+    @Semantics.mimeType: true
+    LogoMime,
+    LogoName,
     @Semantics.user.createdBy: true
     Createdby,
     @Semantics.systemDateTime.createdAt: true

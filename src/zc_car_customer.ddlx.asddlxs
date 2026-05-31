@@ -3,7 +3,8 @@
   typeName: 'Samochód',
   typeNamePlural: 'Samochody',
   title: { type: #STANDARD, value: 'Model' },
-  description: { type: #STANDARD, value: 'Brand' }
+  description: { type: #STANDARD, value: 'Brand' },
+  imageUrl: 'LogoFile'
 }
 annotate entity ZC_CAR_CUSTOMER with 
 {
@@ -60,4 +61,10 @@ annotate entity ZC_CAR_CUSTOMER with
     @UI.selectionField: [ { position: 70 } ]
     @UI.identification: [ { position: 70 } ]
     BodyText;
+    
+    @UI.hidden: true
+    LogoMime;
+    
+    @UI.hidden: true
+    LogoName;
 }
