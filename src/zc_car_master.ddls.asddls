@@ -37,6 +37,7 @@ define root view entity ZC_CAR_MASTER
     @Semantics.mimeType: true
     LogoMime,
     LogoName,
+    DealerNotes,
     @Semantics.user.createdBy: true
     Createdby,
     @Semantics.systemDateTime.createdAt: true

@@ -78,6 +78,11 @@ annotate view ZC_CAR_MASTER with
   @UI.identification: [ { position: 100 } ]
   LogoFile;
   
+  @EndUserText.label: 'Wewnętrzne notatki dealera'
+  @UI.multiLineText: true //duże okno tekstowe, zamiast zwyklego pola
+  @UI.identification: [ { position: 110 } ]
+  DealerNotes;
+  
   @UI.hidden: true
   LogoMime;
   

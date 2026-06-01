@@ -36,7 +36,8 @@ left outer join zcar_body_t as BodyText
     Car.logo_file as LogoFile,
     @Semantics.mimeType: true
     Car.logo_mime as LogoMime,
-    Car.logo_name as LogoName,   
+    Car.logo_name as LogoName,
+    Car.dealer_notes as DealerNotes, 
     @Semantics.user.createdBy: true
     Car.createdby as Createdby,
     Car.createdat as Createdat,

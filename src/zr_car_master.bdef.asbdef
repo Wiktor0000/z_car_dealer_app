@@ -36,7 +36,7 @@ authorization master( global )
   draft action Resume;
   draft determine action Prepare;
 
-  mapping for ZCAR_MASTER corresponding extensible //na przyszlosc, bez dopisania nizej, automatycznie zmapuje.
+  mapping for ZCAR_MASTER corresponding extensible //na przyszlosc, bez dopisania nizej, automatycznie zmapuje (teoretycznie).
   {
   CarID = CAR_ID;
   Vin = VIN;
@@ -52,6 +52,7 @@ authorization master( global )
   LogoFile = LOGO_FILE;
   LogoMime = LOGO_MIME;
   LogoName = LOGO_NAME;
+  DealerNotes = DEALER_NOTES;
   Createdby = CREATEDBY;
   Createdat = CREATEDAT;
   Lastchangedby = LASTCHANGEDBY;
