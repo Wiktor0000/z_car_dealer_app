@@ -17,4 +17,13 @@ use etag
   use action Resume;
   use action Prepare;
   use action decodeVin;
+  use association _CarImages { create; with draft; }
+}
+
+//sekcja dla dziecka
+define behavior for ZC_CAR_IMAGES alias CarImage
+{
+    use update;
+    use delete;
+    use association _CarMaster { with draft; }
 }

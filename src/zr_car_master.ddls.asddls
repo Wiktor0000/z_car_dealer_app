@@ -8,6 +8,8 @@ left outer join zcar_status_t as StatusText
     on Car.status = StatusText.status_code
 left outer join zcar_body_t as BodyText
     on Car.body = BodyText.body_code
+    
+composition [0..*] of ZR_CAR_IMAGES as _CarImages
 {
     
     key Car.car_id as CarID,
@@ -37,7 +39,7 @@ left outer join zcar_body_t as BodyText
     @Semantics.mimeType: true
     Car.logo_mime as LogoMime,
     Car.logo_name as LogoName,
-    Car.dealer_notes as DealerNotes, 
+    Car.dealer_notes as DealerNotes,
     @Semantics.user.createdBy: true
     Car.createdby as Createdby,
     Car.createdat as Createdat,
@@ -47,6 +49,7 @@ left outer join zcar_body_t as BodyText
     Car.lastchangedat as Lastchangedat,
     @Semantics.systemDateTime.localInstanceLastChangedAt: true
     Car.locallastchanged as Locallastchanged,
+    _CarImages,
     
     //dodanie kolorow do statusow
     case Car.status

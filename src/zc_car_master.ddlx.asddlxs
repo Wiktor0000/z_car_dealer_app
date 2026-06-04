@@ -10,13 +10,24 @@ annotate view ZC_CAR_MASTER with
 {
 
   @EndUserText.label: 'ID Samochodu'
-  @UI.facet: [ {
-    id: 'GeneralInfo', 
-    purpose: #STANDARD, 
-    position: 10, 
-    type: #IDENTIFICATION_REFERENCE,
-    label: 'Informacje ogólne'
-  } ]
+  @UI.facet: [ 
+    {
+        id: 'GeneralInfo', 
+        purpose: #STANDARD, 
+        position: 10, 
+        type: #IDENTIFICATION_REFERENCE,
+        label: 'Informacje o samochodzie'
+    },
+    { 
+        id: 'CarImagesGallery',
+        purpose: #STANDARD,
+        position: 20,
+        type: #LINEITEM_REFERENCE,
+        targetElement: '_CarImages', //mostek asocjacji (ważne) z CDS
+        label: 'Galeria zdjec pojazdu'
+    }
+]
+  
   
   @UI.identification: [ { position: 10 } ]
   CarID;
@@ -82,6 +93,15 @@ annotate view ZC_CAR_MASTER with
   @UI.multiLineText: true //duże okno tekstowe, zamiast zwyklego pola
   @UI.identification: [ { position: 110 } ]
   DealerNotes;
+  
+  @EndUserText.label: 'Nazwa Autoryzowanego Salonu'
+  @UI.fieldGroup: [ { qualifier: 'DealerInfo', position: 10 } ]
+  @UI.lineItem: [ { position: 120 } ]
+  NearbyDealerName;
+  
+  @EndUserText.label: 'Adres Salonu'
+  @UI.fieldGroup: [ { qualifier: 'Dealer Info', position: 20 } ]
+  NearbyDealerAddress;
   
   @UI.hidden: true
   LogoMime;

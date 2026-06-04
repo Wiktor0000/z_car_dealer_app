@@ -36,6 +36,8 @@ authorization master( global )
   draft action Resume;
   draft determine action Prepare;
 
+  association _CarImages { create; with draft; }
+
   mapping for ZCAR_MASTER corresponding extensible //na przyszlosc, bez dopisania nizej, automatycznie zmapuje (teoretycznie).
   {
   CarID = CAR_ID;
@@ -60,4 +62,33 @@ authorization master( global )
   Locallastchanged = LOCALLASTCHANGED;
 
   }
+}
+
+//NOWA SEKCJA (DLA DZIECKA)
+define behavior for ZR_CAR_IMAGES alias CarImages
+persistent table ZCAR_IMAGES
+draft table ZCAR_IMAGES_D
+lock dependent by _CarMaster
+authorization dependent by _CarMaster
+etag master locallastchangedat
+
+{
+    update;
+    delete;
+
+    field ( readonly ) ImageId, CarId;
+    field ( numbering : managed ) ImageId;
+
+    association _CarMaster { with draft; }
+
+    mapping for ZCAR_IMAGES
+    {
+        ImageId = IMAGE_ID;
+        CarId = CAR_ID;
+        Attachment = ATTACHMENT;
+        MimeType = MIMETYPE;
+        FileName = FILENAME;
+        LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+
+        }
 }

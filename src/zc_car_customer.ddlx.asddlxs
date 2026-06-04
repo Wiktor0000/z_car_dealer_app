@@ -64,5 +64,8 @@ annotate entity ZC_CAR_CUSTOMER with
     
     @UI.hidden: true
     LogoMime;
+    
+    @UI.hidden: true
+    LogoName;
 
 }

@@ -6,9 +6,14 @@
 "ZR_CAR_MASTER"
 ],
 "ASSOCIATED":
-[],
+[
+"ZC_CAR_IMAGES",
+"ZR_CAR_IMAGES"
+],
 "BASE":
-[],
+[
+"ZR_CAR_MASTER"
+],
 "ANNO_REF":
 [],
 "SCALAR_FUNCTION":
