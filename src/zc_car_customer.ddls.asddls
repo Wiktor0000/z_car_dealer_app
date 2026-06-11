@@ -24,10 +24,13 @@ define root view entity ZC_CAR_CUSTOMER
     LogoName,
     @Consumption.valueHelpDefinition: [{ entity: { name: 'zcar_status_vh', element: 'status_code' }, useForValidation: true}]
     @ObjectModel.text.element: ['StatusText']
+    @UI.textArrangement: #TEXT_ONLY
     StatusText,
     @Consumption.valueHelpDefinition: [{ entity: { name: 'zcar_body_vh', element: 'body_code' } }]
     @ObjectModel.text.element: ['BodyText']
+    @UI.textArrangement: #TEXT_ONLY
     BodyText,
-    StatusColour
+    StatusColour,
+    _CarImages : redirected to ZC_CAR_IMAGES
 
 }

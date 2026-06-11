@@ -2,7 +2,7 @@ projection;
 strict ( 2 );
 
 
-define behavior for ZC_CAR_CUSTOMER alias Car
+define behavior for ZC_CAR_CUSTOMER alias CarCustomer
 {
 
 }

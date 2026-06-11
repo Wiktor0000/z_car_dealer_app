@@ -3,7 +3,7 @@ strict ( 2 );
 extensible;
 use draft;
 use side effects;
-define behavior for ZC_CAR_MASTER alias Car
+define behavior for ZC_CAR_MASTER alias CarMaster
 extensible
 use etag
 {

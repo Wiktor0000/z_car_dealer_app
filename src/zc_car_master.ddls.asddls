@@ -29,10 +29,6 @@ define root view entity ZC_CAR_MASTER
     @ObjectModel.text.element: ['BodyText']
     Body,
     BodyText,
-    @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_CAR_NEARBY_DEALER'
-    virtual NearbyDealerName    : abap.char( 128 ),
-    @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_CAR_NEARBY_DEALER'
-    virtual NearbyDealerAddress : abap.char( 256 ),
     @Semantics.largeObject: { 
         mimeType: 'LogoMime', 
         fileName: 'LogoName', 

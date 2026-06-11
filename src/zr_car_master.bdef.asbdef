@@ -76,7 +76,11 @@ etag master locallastchangedat
     update;
     delete;
 
-    field ( readonly ) ImageId, CarId;
+    field ( readonly )
+        ImageId,
+        CarId,
+        MimeType;
+
     field ( numbering : managed ) ImageId;
 
     association _CarMaster { with draft; }

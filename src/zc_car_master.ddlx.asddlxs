@@ -94,15 +94,6 @@ annotate view ZC_CAR_MASTER with
   @UI.identification: [ { position: 110 } ]
   DealerNotes;
   
-  @EndUserText.label: 'Nazwa Autoryzowanego Salonu'
-  @UI.fieldGroup: [ { qualifier: 'DealerInfo', position: 10 } ]
-  @UI.lineItem: [ { position: 120 } ]
-  NearbyDealerName;
-  
-  @EndUserText.label: 'Adres Salonu'
-  @UI.fieldGroup: [ { qualifier: 'Dealer Info', position: 20 } ]
-  NearbyDealerAddress;
-  
   @UI.hidden: true
   LogoMime;
   

@@ -34,7 +34,6 @@ annotate view ZC_CAR_IMAGES with
 
   @EndUserText.label: 'Typ pliku (MIME)'
   @UI.lineItem: [ { position: 30 } ]
-  @UI.identification: [ { position: 30 } ]
   MimeType;
 
   @UI.hidden: true

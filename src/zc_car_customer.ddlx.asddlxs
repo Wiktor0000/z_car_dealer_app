@@ -15,7 +15,16 @@ annotate entity ZC_CAR_CUSTOMER with
     position: 10, 
     type: #IDENTIFICATION_REFERENCE,
     label: 'Informacje ogólne'
-  } ]
+  },
+  {
+    id: 'CustomerGallery',
+    purpose: #STANDARD,
+    position: 20,
+    type: #LINEITEM_REFERENCE,
+    targetElement: '_CarImages',
+    label: 'Galeria zdjec pojazdu'
+  }
+]
 
     @UI.hidden: true
     CarID;
