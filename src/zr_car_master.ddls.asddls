@@ -10,6 +10,7 @@ left outer join zcar_body_t as BodyText
     on Car.body = BodyText.body_code
     
 composition [0..*] of ZR_CAR_IMAGES as _CarImages
+composition [0..*] of ZR_CAR_SERVICE as _ServiceHistory
 {
     
     key Car.car_id as CarID,
@@ -50,6 +51,7 @@ composition [0..*] of ZR_CAR_IMAGES as _CarImages
     @Semantics.systemDateTime.localInstanceLastChangedAt: true
     Car.locallastchanged as Locallastchanged,
     _CarImages,
+    _ServiceHistory,
     
     //dodanie kolorow do statusow
     case Car.status

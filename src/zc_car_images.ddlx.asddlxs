@@ -4,7 +4,8 @@
   typeNamePlural: 'Zdjęcia pojazdu',
   title: { type: #STANDARD, value: 'FileName' }
 }
-annotate view ZC_CAR_IMAGES with
+annotate view ZC_CAR_IMAGES 
+    with
 {
   @UI.facet: [
     {

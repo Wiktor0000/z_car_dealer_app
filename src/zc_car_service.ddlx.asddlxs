@@ -1,0 +1,39 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+  typeName: 'Wpis serwisowy',
+  typeNamePlural: 'Wpisy serwisowe',
+  title: { type: #STANDARD, value: 'Description' }
+}
+annotate view ZC_CAR_SERVICE
+    with 
+{
+    @UI.facet: [
+        {
+            id: 'ServiceDetails',
+            purpose: #STANDARD,
+            type: #IDENTIFICATION_REFERENCE,
+            label: 'Szczegóły naprawy',
+            position: 10
+    }
+  ]
+    
+    @EndUserText.label: 'Data serwisu'
+    @UI.lineItem: [ { position: 10 } ]
+    @UI.identification: [ { position: 10} ]
+    ServiceDate;
+    
+    @EndUserText.label: 'Przebieg'
+    @UI.lineItem: [ { position: 20 } ]
+    @UI.identification: [ { position: 20} ]
+    Mileage;
+    
+    @EndUserText.label: 'Opis'
+    @UI.lineItem: [ { position: 30 } ]
+    @UI.identification: [ { position: 30} ]
+    Description;
+    
+    @EndUserText.label: 'Koszt'
+    @UI.lineItem: [ { position: 40 } ]
+    @UI.identification: [ { position: 40} ]
+    Cost;
+}

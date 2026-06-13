@@ -37,6 +37,7 @@ authorization master( global )
   draft determine action Prepare;
 
   association _CarImages { create; with draft; }
+  association _ServiceHistory { create; with draft; }
 
   mapping for ZCAR_MASTER corresponding extensible //na przyszlosc, bez dopisania nizej, automatycznie zmapuje (teoretycznie).
   {
@@ -64,7 +65,7 @@ authorization master( global )
   }
 }
 
-//NOWA SEKCJA (DLA DZIECKA)
+//NOWA SEKCJA (DLA DZIECKA) "_CarImage"
 define behavior for ZR_CAR_IMAGES alias CarImages
 persistent table ZCAR_IMAGES
 draft table ZCAR_IMAGES_D
@@ -94,5 +95,38 @@ etag master locallastchangedat
         FileName = FILENAME;
         LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
 
+        }
+}
+
+//NOWA SEKCJA (DLA DZIECKA) "_ServiceHistory"
+define behavior for ZR_CAR_SERVICE alias ServiceHistory
+persistent table ZCAR_SERVICE
+draft table ZCAR_SERVICE_D
+lock dependent by _CarMaster
+authorization dependent by _CarMaster
+etag master locallastchanged
+
+{
+    update;
+    delete;
+
+    field ( readonly )
+        ServiceId,
+        CarId;
+    field ( numbering : managed )
+        ServiceId;
+
+    association _CarMaster { with draft; }
+
+    mapping for ZCAR_SERVICE
+    {
+        ServiceId = SERVICE_ID;
+        CarId = CAR_ID;
+        ServiceDate = SERVICE_DATE;
+        Mileage = MILEAGE;
+        Description = DESCRIPTION;
+        Cost = COST;
+        Currency = CURRENCY;
+        LocalLastChanged = LOCALLASTCHANGED;
         }
 }

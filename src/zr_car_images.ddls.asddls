@@ -9,7 +9,8 @@
 }
 define view entity ZR_CAR_IMAGES 
     as select from zcar_images
-        association to parent ZR_CAR_MASTER as _CarMaster on $projection.CarId = _CarMaster.CarID
+        association to parent ZR_CAR_MASTER as _CarMaster 
+        on $projection.CarId = _CarMaster.CarID
 {
     key image_id as ImageId,
     car_id as CarId,

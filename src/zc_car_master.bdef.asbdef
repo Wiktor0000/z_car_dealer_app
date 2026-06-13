@@ -18,10 +18,19 @@ use etag
   use action Prepare;
   use action decodeVin;
   use association _CarImages { create; with draft; }
+  use association _ServiceHistory { create; with draft; }
 }
 
-//sekcja dla dziecka
+//sekcja dla dziecka "CarImage"
 define behavior for ZC_CAR_IMAGES alias CarImage
+{
+    use update;
+    use delete;
+    use association _CarMaster { with draft; }
+}
+
+//sekcja dla dziecka "ServiceHistory
+define behavior for ZC_CAR_SERVICE alias ServiceHistory
 {
     use update;
     use delete;

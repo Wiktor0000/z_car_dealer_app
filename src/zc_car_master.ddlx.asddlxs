@@ -25,6 +25,14 @@ annotate view ZC_CAR_MASTER with
         type: #LINEITEM_REFERENCE,
         targetElement: '_CarImages', //mostek asocjacji (ważne) z CDS
         label: 'Galeria zdjec pojazdu'
+    },
+    { 
+        id: 'ServiceHistory',
+        purpose: #STANDARD,
+        position: 30,
+        type: #LINEITEM_REFERENCE,
+        targetElement: '_ServiceHistory',
+        label: 'Historia serwisowa pojazdu'
     }
 ]
   

@@ -3,4 +3,5 @@ define service ZUI_CAR_MASTER {
   expose ZC_CAR_MASTER   as CarDealer;
   expose ZC_CAR_CUSTOMER as CarCustomer;
   expose ZC_CAR_IMAGES   as CarImage;
+  expose ZC_CAR_SERVICE  as ServiceHistory;
 }

@@ -49,6 +49,7 @@ define root view entity ZC_CAR_MASTER
     @Semantics.systemDateTime.localInstanceLastChangedAt: true
     Locallastchanged,
     StatusColour,
-    _CarImages : redirected to composition child ZC_CAR_IMAGES
+    _CarImages : redirected to composition child ZC_CAR_IMAGES,
+    _ServiceHistory : redirected to composition child ZC_CAR_SERVICE
     
 }
