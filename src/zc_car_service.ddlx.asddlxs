@@ -1,7 +1,7 @@
 @Metadata.layer: #CORE
 @UI.headerInfo: {
-  typeName: 'Wpis serwisowy',
-  typeNamePlural: 'Wpisy serwisowe',
+  typeName: 'Service note',
+  typeNamePlural: 'Service notes',
   title: { type: #STANDARD, value: 'Description' }
 }
 annotate view ZC_CAR_SERVICE
@@ -12,28 +12,28 @@ annotate view ZC_CAR_SERVICE
             id: 'ServiceDetails',
             purpose: #STANDARD,
             type: #IDENTIFICATION_REFERENCE,
-            label: 'Szczegóły naprawy',
+            label: 'Repair details',
             position: 10
     }
   ]
     
-    @EndUserText.label: 'Data serwisu'
-    @UI.lineItem: [ { position: 10 } ]
+    @EndUserText.label: 'Service date'
+    @UI.lineItem:       [ { position: 10 } ]
     @UI.identification: [ { position: 10} ]
     ServiceDate;
     
-    @EndUserText.label: 'Przebieg'
-    @UI.lineItem: [ { position: 20 } ]
+    @EndUserText.label: 'Mileage'
+    @UI.lineItem:       [ { position: 20 } ]
     @UI.identification: [ { position: 20} ]
     Mileage;
     
-    @EndUserText.label: 'Opis'
-    @UI.lineItem: [ { position: 30 } ]
+    @EndUserText.label: 'Repair description'
+    @UI.lineItem:       [ { position: 30 } ]
     @UI.identification: [ { position: 30} ]
     Description;
     
-    @EndUserText.label: 'Koszt'
-    @UI.lineItem: [ { position: 40 } ]
+    @EndUserText.label: 'Price'
+    @UI.lineItem:       [ { position: 40 } ]
     @UI.identification: [ { position: 40} ]
     Cost;
 }

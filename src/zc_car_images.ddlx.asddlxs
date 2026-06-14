@@ -1,7 +1,7 @@
 @Metadata.layer: #CORE
 @UI.headerInfo: {
-  typeName: 'Zdjęcie',
-  typeNamePlural: 'Zdjęcia pojazdu',
+  typeName: 'Photo',
+  typeNamePlural: 'Car Photos',
   title: { type: #STANDARD, value: 'FileName' }
 }
 annotate view ZC_CAR_IMAGES 
@@ -12,7 +12,7 @@ annotate view ZC_CAR_IMAGES
       id: 'ImageDetails',
       purpose: #STANDARD,
       type: #IDENTIFICATION_REFERENCE,
-      label: 'Szczegóły pliku',
+      label: 'File details',
       position: 10
     }
   ]
@@ -23,18 +23,18 @@ annotate view ZC_CAR_IMAGES
   @UI.hidden: true
   CarId;
 
-  @EndUserText.label: 'Miniaturka'
-  @UI.lineItem: [ { position: 10, importance: #HIGH } ]
-  @UI.identification: [ { position: 10 } ]
+  @EndUserText.label: 'Photo'
+  @UI.lineItem:         [ { position: 10, importance: #HIGH } ]
+  @UI.identification:   [ { position: 10 } ]
   Attachment;
 
-  @EndUserText.label: 'Nazwa pliku'
-  @UI.lineItem: [ { position: 20 } ]
-  @UI.identification: [ { position: 20 } ]
+  @EndUserText.label: 'File name'
+  @UI.lineItem:         [ { position: 20 } ]
+  @UI.identification:   [ { position: 20 } ]
   FileName;
 
-  @EndUserText.label: 'Typ pliku (MIME)'
-  @UI.lineItem: [ { position: 30 } ]
+  @EndUserText.label: 'File type'
+  @UI.lineItem:         [ { position: 30 } ]
   MimeType;
 
   @UI.hidden: true

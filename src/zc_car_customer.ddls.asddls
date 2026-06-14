@@ -31,6 +31,7 @@ define root view entity ZC_CAR_CUSTOMER
     @UI.textArrangement: #TEXT_ONLY
     BodyText,
     StatusColour,
-    _CarImages : redirected to ZC_CAR_IMAGES
+    _CarImages : redirected to ZC_CAR_IMAGES,
+    _ServiceHistory : redirected to ZC_CAR_SERVICE
 
 }

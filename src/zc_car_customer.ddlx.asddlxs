@@ -1,20 +1,20 @@
 @Metadata.layer: #CUSTOMER
 @UI.headerInfo: {
-  typeName: 'Samochód',
-  typeNamePlural: 'Samochody',
+  typeName: 'Car',
+  typeNamePlural: 'Cars',
   title: { type: #STANDARD, value: 'Model' },
   description: { type: #STANDARD, value: 'Brand' },
   imageUrl: 'LogoFile'
 }
 annotate entity ZC_CAR_CUSTOMER with 
 {
-    @EndUserText.label: 'ID Samochodu'
+    @EndUserText.label: 'Car ID'
     @UI.facet: [ {
     id: 'GeneralInfo', 
     purpose: #STANDARD, 
     position: 10, 
     type: #IDENTIFICATION_REFERENCE,
-    label: 'Informacje ogólne'
+    label: 'Car Information'
   },
   {
     id: 'CustomerGallery',
@@ -22,51 +22,59 @@ annotate entity ZC_CAR_CUSTOMER with
     position: 20,
     type: #LINEITEM_REFERENCE,
     targetElement: '_CarImages',
-    label: 'Galeria zdjec pojazdu'
-  }
+    label: 'Car Photo Gallery'
+   },
+   {
+    id: 'CustomerServiceHistory',
+    purpose: #STANDARD,
+    position: 30,
+    type: #LINEITEM_REFERENCE,
+    targetElement: '_ServiceHistory',
+    label: 'Car Service History'
+   }
 ]
 
     @UI.hidden: true
     CarID;
     
-    @EndUserText.label: 'Marka'
-    @UI.lineItem: [ { position: 10 } ]
+    @EndUserText.label: 'Brand'
+    @UI.lineItem:       [ { position: 10 } ]
     @UI.selectionField: [ { position: 10 } ]
     @UI.identification: [ { position: 10 } ]
     Brand;
     
     @EndUserText.label: 'Model'
-    @UI.lineItem: [ { position: 20 } ]
+    @UI.lineItem:       [ { position: 20 } ]
     @UI.selectionField: [ { position: 20 } ]
     @UI.identification: [ { position: 20 } ]
     Model;
     
-    @EndUserText.label: 'Rok produkcji'
-    @UI.lineItem: [ { position: 30 } ]
+    @EndUserText.label: 'Year of production'
+    @UI.lineItem:       [ { position: 30 } ]
     @UI.selectionField: [ { position: 30 } ]
     @UI.identification: [ { position: 30 } ]
     YearOfProduction;
     
-    @EndUserText.label: 'Przebieg'
-    @UI.lineItem: [ { position: 40 } ]
+    @EndUserText.label: 'Mileage'
+    @UI.lineItem:       [ { position: 40 } ]
     @UI.selectionField: [ { position: 40 } ]
     @UI.identification: [ { position: 40 } ]
     Kilometers;
     
-    @EndUserText.label: 'Cena'
-    @UI.lineItem: [ { position: 50 } ]
+    @EndUserText.label: 'Price'
+    @UI.lineItem:       [ { position: 50 } ]
     @UI.selectionField: [ { position: 50 } ]
     @UI.identification: [ { position: 50 } ]
     Price;
     
     @EndUserText.label: 'Status'
-    @UI.lineItem: [ { position: 60, criticality: 'StatusColour' } ]
+    @UI.lineItem:       [ { position: 60, criticality: 'StatusColour' } ]
     @UI.selectionField: [ { position: 60 } ]
     @UI.identification: [ { position: 60 } ]
     StatusText;
     
-    @EndUserText.label: 'Nadwozie'
-    @UI.lineItem: [ { position: 70 } ]
+    @EndUserText.label: 'Body'
+    @UI.lineItem:       [ { position: 70 } ]
     @UI.selectionField: [ { position: 70 } ]
     @UI.identification: [ { position: 70 } ]
     BodyText;

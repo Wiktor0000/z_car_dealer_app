@@ -1,7 +1,7 @@
 @Metadata.layer: #CORE
 @UI.headerInfo: {
-  typeName: 'Samochód',
-  typeNamePlural: 'Samochody',
+  typeName: 'Car',
+  typeNamePlural: 'Cars',
   title: { type: #STANDARD, value: 'Model' },
   description: { type: #STANDARD, value: 'Brand' },
   imageUrl: 'LogoFile'
@@ -9,14 +9,14 @@
 annotate view ZC_CAR_MASTER with
 {
 
-  @EndUserText.label: 'ID Samochodu'
+  @EndUserText.label: 'Car ID'
   @UI.facet: [ 
     {
         id: 'GeneralInfo', 
         purpose: #STANDARD, 
         position: 10, 
         type: #IDENTIFICATION_REFERENCE,
-        label: 'Informacje o samochodzie'
+        label: 'Car Information'
     },
     { 
         id: 'CarImagesGallery',
@@ -24,82 +24,82 @@ annotate view ZC_CAR_MASTER with
         position: 20,
         type: #LINEITEM_REFERENCE,
         targetElement: '_CarImages', //mostek asocjacji (ważne) z CDS
-        label: 'Galeria zdjec pojazdu'
+        label: 'Car Photo Gallery'
     },
     { 
-        id: 'ServiceHistory',
+        id: 'DealerServiceHistory',
         purpose: #STANDARD,
         position: 30,
         type: #LINEITEM_REFERENCE,
         targetElement: '_ServiceHistory',
-        label: 'Historia serwisowa pojazdu'
+        label: 'Car Service History'
     }
 ]
   
   
-  @UI.identification: [ { position: 10 } ]
+  @UI.identification:   [ { position: 10 } ]
   CarID;
 
-  @EndUserText.label: 'Marka'
-  @UI.identification: [ { position: 20 } ]
-  @UI.lineItem: [ { position: 20 } ]
-  @UI.selectionField: [ { position: 20 } ]
+  @EndUserText.label: 'Brand'
+  @UI.identification:   [ { position: 20 } ]
+  @UI.lineItem:         [ { position: 20 } ]
+  @UI.selectionField:   [ { position: 20 } ]
   Brand;
 
   @EndUserText.label: 'Model'
-  @UI.identification: [ { position: 30 } ]
-  @UI.lineItem: [ { position: 30 } ]
-  @UI.selectionField: [ { position: 30 } ]
+  @UI.identification:   [ { position: 30 } ]
+  @UI.lineItem:         [ { position: 30 } ]
+  @UI.selectionField:   [ { position: 30 } ]
   Model;
 
-  @EndUserText.label: 'Numer VIN'
+  @EndUserText.label: 'VIN'
   @UI.identification: [ 
     { position: 35 },
     { type: #FOR_ACTION, dataAction: 'decodeVin', label: 'Dekoduj Vin' }
     ]
-  @UI.lineItem: [ { position: 35 } ]
-  @UI.selectionField: [ { position: 35 } ]
+  @UI.lineItem:         [ { position: 35 } ]
+  @UI.selectionField:   [ { position: 35 } ]
   Vin;
   
   @EndUserText.label: 'Status'
-  @UI.identification: [ { position: 40 } ]
-  @UI.lineItem: [ { position: 40, criticality: 'StatusColour' } ]
-  @UI.selectionField: [ { position: 40 } ]
+  @UI.identification:   [ { position: 40 } ]
+  @UI.lineItem:         [ { position: 40, criticality: 'StatusColour' } ]
+  @UI.selectionField:   [ { position: 40 } ]
   @UI.textArrangement: #TEXT_ONLY //usuwa (A), daje samo available
   Status;
 
-  @EndUserText.label: 'Rok produkcji'
-  @UI.identification: [ { position: 50 } ]
-  @UI.lineItem: [ { position: 50 } ]
+  @EndUserText.label: 'Year of production'
+  @UI.identification:   [ { position: 50 } ]
+  @UI.lineItem:         [ { position: 50 } ]
   YearOfProduction;
   
-  @EndUserText.label: 'Przebieg'
-  @UI.identification: [ { position: 60 } ]
-  @UI.lineItem: [ { position: 60} ]
+  @EndUserText.label: 'Mileage'
+  @UI.identification:   [ { position: 60 } ]
+  @UI.lineItem:         [ { position: 60} ]
   Kilometers;
   
-  @EndUserText.label: 'Nadwozie'
-  @UI.identification: [ { position: 70 } ]
-  @UI.lineItem: [ { position: 70 } ]
+  @EndUserText.label: 'Body'
+  @UI.identification:   [ { position: 70 } ]
+  @UI.lineItem:         [ { position: 70 } ]
   @UI.textArrangement: #TEXT_ONLY
   Body;
 
-  @EndUserText.label: 'Cena'
-  @UI.identification: [ { position: 80 } ]
-  @UI.lineItem: [ { position: 80 } ]
+  @EndUserText.label: 'Price'
+  @UI.identification:   [ { position: 80 } ]
+  @UI.lineItem:         [ { position: 80 } ]
   Price;
 
-  @EndUserText.label: 'Notatki'
-  @UI.identification: [ { position: 90 } ]
+  @EndUserText.label: 'Notes'
+  @UI.identification:   [ { position: 90 } ]
   Note;
   
-  @EndUserText.label: 'Logo pojazdu'
-  @UI.identification: [ { position: 100 } ]
+  @EndUserText.label: 'Car logo'
+  @UI.identification:   [ { position: 100 } ]
   LogoFile;
   
-  @EndUserText.label: 'Wewnętrzne notatki dealera'
+  @EndUserText.label: 'Internal dealer notes'
   @UI.multiLineText: true //duże okno tekstowe, zamiast zwyklego pola
-  @UI.identification: [ { position: 110 } ]
+  @UI.identification:   [ { position: 110 } ]
   DealerNotes;
   
   @UI.hidden: true
