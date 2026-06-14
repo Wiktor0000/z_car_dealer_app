@@ -2,7 +2,7 @@
 > ### 📺 Quick Project Video Presentation
 > **Watch the application walkthrough and feature live-demonstrations on Vimeo:**
 > 
-> * **[👉 Click here to watch: Car Dealer Application View (Draft-Enabled Pipeline) 👈](https://vimeo.com/1201219246?fl=tl&fe=ec)**
+> * **[👉 Click here to watch: Car Dealer Application View (Draft-Enabled Pipeline) 👈](https://vimeo.com/1201219246?share=copy&fl=sv&fe=ci)**
 > * **[👉 Click here to watch: Car Customer Portal View (Read-Only Catalog) 👈](https://vimeo.com/1201219246?fl=tl&fe=ec)**
 >
 
