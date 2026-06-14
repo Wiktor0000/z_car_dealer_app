@@ -14,12 +14,13 @@ define view entity ZR_CAR_IMAGES
 {
     key image_id as ImageId,
     car_id as CarId,
-@Semantics.largeObject: {
+    @Semantics.largeObject: {
     mimeType: 'MimeType',
     fileName: 'FileName',
     contentDispositionPreference: #INLINE
 }
     attachment as Attachment,
+    @Semantics.mimeType: true
     mimetype as MimeType,
     filename as FileName,
     @Semantics.systemDateTime.localInstanceLastChangedAt: true

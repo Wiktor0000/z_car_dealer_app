@@ -79,8 +79,7 @@ etag master locallastchangedat
 
     field ( readonly )
         ImageId,
-        CarId,
-        MimeType;
+        CarId;
 
     field ( numbering : managed ) ImageId;
 

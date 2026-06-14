@@ -33,8 +33,7 @@ annotate view ZC_CAR_IMAGES
   @UI.identification:   [ { position: 20 } ]
   FileName;
 
-  @EndUserText.label: 'File type'
-  @UI.lineItem:         [ { position: 30 } ]
+  @UI.hidden: true
   MimeType;
 
   @UI.hidden: true
