@@ -3,7 +3,7 @@
 > **Watch the application walkthrough and feature live-demonstrations on Vimeo:**
 > 
 > * **[👉 Click here to watch: Car Dealer Application View (Draft-Enabled Pipeline) 👈](https://vimeo.com/1201219246?share=copy&fl=sv&fe=ci)**
-> * **[👉 Click here to watch: Car Customer Portal View (Read-Only Catalog) 👈](https://vimeo.com/1201219246?fl=tl&fe=ec)**
+> * **[👉 Click here to watch: Car Customer Portal View (Read-Only Catalog) 👈](https://vimeo.com/1201228881?share=copy&fl=sv&fe=ci)**
 >
 
 Comprehensive enterprise-grade application built on the **SAP ABAP RESTful Application Programming Model (RAP)**. The project implements a robust transactional backend and exposes tailored User Interfaces using **SAP Fiori Elements** for two distinct business roles: Car Dealers and Retail Customers.
