@@ -1,37 +1,103 @@
-# Car Master Hub - SAP RAP
+> [!IMPORTANT]
+> ### 📺 Quick Project Video Presentation
+> **Watch the application walkthrough and feature live-demonstrations on Vimeo:**
+> 
+> * **[👉 Click here to watch: Car Dealer Application View (Draft-Enabled Pipeline) 👈](https://vimeo.com/1201219246?fl=tl&fe=ec)**
+> * **[👉 Click here to watch: Car Customer Portal View (Read-Only Catalog) 👈](https://vimeo.com/1201219246?fl=tl&fe=ec)**
+>
 
-[![SAP BTP](https://img.shields.io/badge/SAP-BTP-blue?style=flat-square)](https://www.sap.com)
-[![ABAP Cloud](https://img.shields.io/badge/ABAP-Cloud-black?style=flat-square)](https://keywords.sap.com)
-[![OData V4](https://img.shields.io/badge/OData-V4-orange?style=flat-square)](https://www.odata.org)
-[![Framework](https://img.shields.io/badge/RAP-Managed__with__draft-green?style=flat-square)]()
-
----
-
-## 🚀 Key Features
-
-* **Automated External REST API Integration:** The system features a dedicated ABAP HTTP client that queries an external microservice (NHTSA vPIC) upon VIN entry. It asynchronously parses the JSON response to automatically populate vehicle details (make, model, production year).
-* **Full Draft Handling Support (Managed):** The implementation of the `with draft` mechanism allows for seamless, conflict-free editing and temporary form state saving. This prevents immediate database locking and ensures no data is lost if the session is interrupted.
-* **RAP Business Actions:** Built-in native operations that modify entity states in real-time (e.g., a quick car reservation/purchase action directly from the customer view).
-* **Persona-Based UI Architecture:** Independent CDS data projections tailored specifically for Dealer and Customer roles, all driven by a single core business data model.
+Comprehensive enterprise-grade application built on the **SAP ABAP RESTful Application Programming Model (RAP)**. The project implements a robust transactional backend and exposes tailored User Interfaces using **SAP Fiori Elements** for two distinct business roles: Car Dealers and Retail Customers.
 
 ---
 
-## 🛠️ Tech Stack
+## Architecture Overview
 
-* **Backend:** ABAP Cloud, Clean ABAP, Object-Oriented ABAP (OO ABAP).
-* **Data Modeling:** ABAP Core Data Services (CDS View Entities, Projection Views, Metadata Extensions).
-* **Communication Protocol:** OData V4 (Metadata-Driven UI, performance optimization via associations, and *Lazy Loading* for Value Helps).
-* **External Connectivity:** HTTP Client (`cl_web_http_client`), JSON Deserialization (`/ui2/cl_json`).
-* **Frontend:** SAP Fiori Elements (List Report & Object Page) driven entirely by backend annotations.
+The application follows the modern SAP RAP Best Practices, separating the core business logic (Managed Scenario) from the role-specific consumption layer.
+
+```text
+               ┌─────────────────────────────────┐
+               │    SAP Fiori Elements UI Layer  │
+               └────────────────┬────────────────┘
+                                │
+          ┌─────────────────────┴─────────────────────┐
+          ▼                                           ▼
+┌───────────────────┐                       ┌───────────────────┐
+│ Dealer UI Portal  │                       │Customer UI Portal │
+│  (Full CRUD+Draft)│                       │    (Read-Only)    │
+└─────────┬─────────┘                       └─────────┬─────────┘
+          │                                           │
+          ▼                                           ▼
+┌───────────────────┐                       ┌───────────────────┐
+│  ZC_CAR_MASTER    │                       │  ZC_CAR_CUSTOMER  │
+│  Projection View  │                       │  Projection View  │
+└─────────┬─────────┘                       └─────────┬─────────┘
+          │                                           │
+          └─────────────────────┬─────────────────────┘
+                                │ (Redirection)
+                                ▼
+                    ┌───────────────────────┐
+                    │     ZR_CAR_MASTER     │
+                    │   Core Business Obj.  │
+                    └───────────┬───────────┘
+                                │
+        ┌───────────────────────┼───────────────────────┐
+        ▼                       ▼                       ▼
+┌───────────────┐       ┌───────────────┐       ┌───────────────┐
+│ zcar_master   │       │ zcar_images   │       │ zcar_service  │
+│ (Core Vehicle)│       │ (Attachments) │       │ (1:N History) │
+└───────────────┘       └───────────────┘       └───────────────┘
+```
+## Business Object Hierarchy & Data Model
+The backend business service exposes a multi-level entity composition tree structured to support transactional processes and seamless data navigation.
+
+![Entity Set and Service Associations](./images/entity_set.png)
+
+### Key Architectural Components:
+* **Root Projections (`CarDealer` / `CarCustomer`):** Tailored service entry points. `CarDealer` provides a full transaction pipeline equipped with draft capabilities, while `CarCustomer` acts as an optimized, consumer-facing read-only endpoint.
+* **Vehicle Image Gallery (`_CarImages`):** Sub-node handling binary data streams (`RAWSTRING`) for car logotypes and vehicle gallery photos with fully automated background MIME-type mappings.
+* **Service History (`_ServiceHistory`):** Hierarchical 1:N operational child node detailing comprehensive service, repairs, and financial logs for each vehicle instance.
 
 ---
 
-## 📂 Project Structure
+## Project Structure & ABAP Repository Layout
 
-The project comprises the following core architectural artifacts:
+The development artifacts are strictly organized according to the **SAP Virtual Data Model (VDM)** best practices, ensuring a clean separation of concerns between core data provisioning and exposure layers.
 
-* `ZR_CAR_MASTER` - Base Entity View (Data Definition) defining the data model and dictionary associations.
-* `ZC_CAR_MASTER` / `ZC_CAR_CUSTOMER` — CDS Projection Views tailored to specific user roles.
-* `ZR_CAR_MASTER` (Behavior Definition) — Defines business behaviors, CRUD operations, draft handling, and the `decodeVin` action.
-* `ZBP_R_CAR_MASTER` - Behavior Pool implementation class containing the business logic for actions and the HTTP GET network integration with the API.
-* `ZUI_CAR_MASTER` / `ZSB_CAR_MASTER` — Service Definition & Service Binding exposing the service using the OData V4 standard.
+### Data Definitions (CDS Views)
+
+| Artifact Name | Layer | Description |
+| :--- | :--- | :--- |
+| **`ZR_CAR_MASTER`** | Core / Base | Core Business Object view entity for the vehicle master data (Root node). |
+| **`ZR_CAR_IMAGES`** | Core / Base | Base view entity managing attachment links and large media objects (Child node). |
+| **`ZR_CAR_SERVICE`** | Core / Base | Base view entity for vehicle operational and repair history logs (Child node). |
+| **`ZC_CAR_MASTER`** | Projection | Transactional projection view optimized for the Car Dealer application interface. |
+| **`ZC_CAR_CUSTOMER`**| Projection | Consumer projection view configured specifically as a read-only portal for Customers. |
+| **`ZC_CAR_IMAGES`** | Projection | Role-specific projection view exposing car images child node compositions. |
+| **`ZC_CAR_SERVICE`** | Projection | Role-specific projection view exposing service history child node compositions. |
+| **`ZCAR_BODY_VH`** | Value Help  | Dedicated Value Help definition supplying data for Car Body Types dropdown fields. |
+| **`ZCAR_STATUS_VH`** | Value Help  | Dedicated Value Help definition supplying data for Transactional Statuses dropdown fields. |
+
+### Metadata Extensions (MDE)
+
+UI annotations are fully decoupled from data provisioning layers and isolated inside specific extensions to drive the SAP Fiori Elements frontend dynamically:
+
+* **`ZC_CAR_MASTER`** – Defines layouts, facets, selection fields, and custom actions for the Dealer UI.
+* **`ZC_CAR_CUSTOMER`** – Controls the read-only card grids and details view exposed to retail clients.
+* **`ZC_CAR_IMAGES`** – Controls the presentation layout of the media attachment gallery and input fields.
+* **`ZC_CAR_SERVICE`** – Organizes responsive table listings for maintenance timelines and historical cost metrics.
+
+---
+
+## Key Technical Implementations
+
+* **Draft-Enabled Capabilities:** Bulletproof session state management preventing data loss during multi-stage vehicle edits, handled natively via the RAP framework.
+* **Custom Field Formatting & Semantics:** Dynamic status criticalities (color-coded markers based on state), clean text arrangement formatting, and seamless currency lookups for financial logs.
+* **Large Object Media Processing:** Enterprise attachment handling mapping automated MIME streams (`RAWSTRING`) directly via database tables without hardcoded UI parameters.
+
+---
+
+## Deployment & Usage
+
+1. **Backend:** Import the repository into your ABAP Development Tools (ADT) in Eclipse.
+2. **Service Definition:** Activate the Service Definition and bind it to a **OData V4 UI Service** (`UI_CAR_DEALER_V4` / `UI_CAR_CUSTOMER_V4`).
+3. **Frontend:** Run via SAP Fiori Elements preview to explore the draft-enabled dealer pipeline or customer catalog.
